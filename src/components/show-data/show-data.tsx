@@ -28,8 +28,6 @@ export const ShowWeatherData = () => {
 		};
 	}, []);
 
-	console.log(temperatureArray.length);
-
 	return (
 		<div className='flex flex-col gap-4'>
 			<div className='flex flex-row gap-2 flex-wrap'>{measurements.map((measurement, index) => index > 0 && <WeatherDataItem key={index} {...measurement} />)}</div>
