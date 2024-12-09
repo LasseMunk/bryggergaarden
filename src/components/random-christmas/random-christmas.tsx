@@ -185,7 +185,7 @@ export const ChristmasTreeWheel = () => {
 	};
 
 	return (
-		<div className='flex flex-1 gap-4 flex-col max-w-fit items-center'>
+		<div className='flex flex-1 gap-4 flex-col  items-center justify-center w-full'>
 			<div className='flex gap-4 flex-row items-center'>
 				<label>rotations tid i sekunder</label>
 				<input className='border border-1 rounded p-2' type='number' value={rotationTime} onChange={(e) => setRotationTime(Number(e.target.value))} placeholder='Rotation time in seconds' />
