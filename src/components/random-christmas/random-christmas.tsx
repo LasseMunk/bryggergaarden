@@ -2,8 +2,9 @@ import { useRef, useState, useEffect, useCallback } from "react";
 
 export const ChristmasTreeWheel = () => {
 	const canvasRef = useRef<HTMLCanvasElement>(null);
-	const [names] = useState<string[]>(["Anstina", "Henrik", "Janne", "Jeppe", "Lasse", "Mads", "Marlene", "Mette", "Rasmus", "Stine"]);
-	// const [inputNames, setInputNames] = useState<string>("");
+	const defaultNames = ["Anstina", "Henrik", "Janne", "Jeppe", "Katrine", "Lasse", "Mads", "Marlene", "Mette", "Rasmus", "Stine"];
+	const [names, setNames] = useState<string[]>(defaultNames);
+	const [inputNames, setInputNames] = useState<string>(defaultNames.join(", "));
 	const [rotationTime, setRotationTime] = useState<number>(20);
 	const [isRotating, setIsRotating] = useState<boolean>(false);
 	const [speed] = useState<number>(3); // Add speed state
@@ -119,14 +120,14 @@ export const ChristmasTreeWheel = () => {
 		animate();
 	};
 
-	const handleReset = () => {
-		// setNames([]);
-		// setInputNames("");
-		setRotationTime(20);
-		setIsRotating(false);
-		setAngle(0);
-		setSantaPosition(null);
-	};
+	// const handleReset = () => {
+	// 	// setNames([]);
+	// 	// setInputNames("");
+	// 	setRotationTime(20);
+	// 	setIsRotating(false);
+	// 	setAngle(0);
+	// 	setSantaPosition(null);
+	// };
 
 	const drawStar = (ctx: CanvasRenderingContext2D, x: number, y: number, radius: number, points: number, inset: number) => {
 		ctx.save();
@@ -185,8 +186,6 @@ export const ChristmasTreeWheel = () => {
 
 	return (
 		<div className='flex flex-1 gap-2 flex-col max-w-fit'>
-			{/* <textarea value={inputNames} onChange={(e) => setInputNames(e.target.value)} placeholder='Enter names separated by commas' /> */}
-			{/* <button onClick={() => setNames(inputNames.split(",").map((name) => name.trim()))}>Set Names</button> */}
 			<div className='flex gap-4'>
 				<label>rotations tid i sekunder</label>
 				<input className='border border-1 rounded' type='number' value={rotationTime} onChange={(e) => setRotationTime(Number(e.target.value))} placeholder='Rotation time in seconds' />
@@ -194,8 +193,10 @@ export const ChristmasTreeWheel = () => {
 			<button onClick={handleStart} disabled={isRotating}>
 				Start
 			</button>
-			<button onClick={handleReset}>Reset</button>
+			{/* <button onClick={handleReset}>Reset</button> */}
 			<canvas ref={canvasRef} width={600} height={600} />
+			<textarea value={inputNames} onChange={(e) => setInputNames(e.target.value)} placeholder='Enter names separated by commas' />
+			<button onClick={() => setNames(inputNames.split(",").map((name) => name.trim()))}>Set Names</button>
 		</div>
 	);
 };
