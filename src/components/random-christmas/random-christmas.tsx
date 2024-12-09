@@ -185,18 +185,22 @@ export const ChristmasTreeWheel = () => {
 	};
 
 	return (
-		<div className='flex flex-1 gap-2 flex-col max-w-fit'>
-			<div className='flex gap-4'>
+		<div className='flex flex-1 gap-4 flex-col max-w-fit items-center'>
+			<div className='flex gap-4 flex-row items-center'>
 				<label>rotations tid i sekunder</label>
-				<input className='border border-1 rounded' type='number' value={rotationTime} onChange={(e) => setRotationTime(Number(e.target.value))} placeholder='Rotation time in seconds' />
+				<input className='border border-1 rounded p-2' type='number' value={rotationTime} onChange={(e) => setRotationTime(Number(e.target.value))} placeholder='Rotation time in seconds' />
 			</div>
-			<button onClick={handleStart} disabled={isRotating}>
-				Start
-			</button>
+			<div>
+				<button onClick={handleStart} disabled={isRotating} className='bg-lime-400 border border-1 rounded p-2'>
+					Start
+				</button>
+			</div>
 			{/* <button onClick={handleReset}>Reset</button> */}
 			<canvas ref={canvasRef} width={600} height={600} />
-			<textarea value={inputNames} onChange={(e) => setInputNames(e.target.value)} placeholder='Enter names separated by commas' />
-			<button onClick={() => setNames(inputNames.split(",").map((name) => name.trim()))}>Set Names</button>
+			<textarea className='border border-1 rounded p-2 w-full' value={inputNames} onChange={(e) => setInputNames(e.target.value)} placeholder='Enter names separated by commas' />
+			<button className='border border-1 rounded p-2' onClick={() => setNames(inputNames.split(",").map((name) => name.trim()))}>
+				Set Names
+			</button>
 		</div>
 	);
 };
