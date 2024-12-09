@@ -197,7 +197,7 @@ export const ChristmasTreeWheel = () => {
 			</div>
 			{/* <button onClick={handleReset}>Reset</button> */}
 			<canvas ref={canvasRef} width={600} height={600} />
-			<textarea className='border border-1 rounded p-2 w-full' value={inputNames} onChange={(e) => setInputNames(e.target.value)} placeholder='Enter names separated by commas' />
+			<textarea className='border border-1 rounded p-2 w-full max-w-96' value={inputNames} onChange={(e) => setInputNames(e.target.value)} placeholder='Enter names separated by commas' />
 			<button className='border border-1 rounded p-2' onClick={() => setNames(inputNames.split(",").map((name) => name.trim()))}>
 				Set Names
 			</button>
